@@ -5,13 +5,14 @@ import "encoding/json"
 import "log"
 
 type Params struct {
-	// fill in this with input parameters
+	Payload string `json:"payload"`
 }
 
 type Result struct {
-	// fill this in with output parameters
+	Reversed string `json:"reversed"`
 }
 
+// extract invocation parameters, passed as JSON string argument on command-line.
 func params() Params {
 	var params Params
 	source := os.Args[1]
@@ -22,6 +23,7 @@ func params() Params {
 	return params
 }
 
+// convert struct back to JSON for response
 func return_result(result Result) {
 	buf, err := json.Marshal(result)
 	if err != nil {
@@ -31,6 +33,16 @@ func return_result(result Result) {
 }
 
 func main() {
-	result := Result{}
+	input := params()
+
+	// reverse the string passed from invocation parameters
+	chars := []rune(input.Payload)
+	for i, j := 0, len(chars)-1; i < j; i, j = i+1, j-1 {
+		chars[i], chars[j] = chars[j], chars[i]
+	}
+	result := Result{
+		Reversed: string(chars),
+	}
+
 	return_result(result)
 }
