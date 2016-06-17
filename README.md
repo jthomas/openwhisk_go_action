@@ -15,7 +15,7 @@ go build action.go
 - Build Docker image for Action and push to Dockerhub.
 
 ```
-docker -t dockerhub_username/some_image_name .
+docker build -t dockerhub_username/some_image_name .
 docker push dockerhub_username/some_image_name
 ```
 
