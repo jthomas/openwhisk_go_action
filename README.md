@@ -36,6 +36,7 @@ docker push dockerhub_username/some_image_name
 wsk action create --docker go_action dockerhub_username/some_image_name
 ```
 
+- Invoke Go Action.
 
 ```
 wsk action invoke --blocking --result go_action --param payload "Hello World"
