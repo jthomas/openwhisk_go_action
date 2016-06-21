@@ -11,11 +11,16 @@ usage
 
 - Modify the sample _action.go_ file in the [docker_sdk](https://github.com/jthomas/openwhisk_go_action/tree/master/docker_sdk) or [go_handler](https://github.com/jthomas/openwhisk_go_action/tree/master/go_handler) directory with the implementation code.
 
+- Install Go packages (_Go handler sample only_)
+```
+go get github.com/jthomas/ow
+```
+
 - Cross-compile Go binary for platform architecture.
 ```
 export GOARCH=386
 export GOOS=linux
-go build action.go
+go build -o action
 ```
 
 - Build Docker image for Action and push to Dockerhub.
