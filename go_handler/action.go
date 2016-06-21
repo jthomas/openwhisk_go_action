@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/jthomas/openwhisk"
+	"github.com/jthomas/ow"
 )
 
 type Params struct {
@@ -22,7 +22,7 @@ func reverse_string(to_reverse string) string {
 }
 
 func main() {
-	openwhisk.RegisterAction(func(value json.RawMessage) (interface{}, error) {
+	ow.RegisterAction(func(value json.RawMessage) (interface{}, error) {
 		var params Params
 		err := json.Unmarshal(value, &params)
 		if err != nil {
