@@ -2,9 +2,9 @@
 
 This project highlights two methods for running Go language binaries as OpenWhisk Actions, using the OpenWhisk Docker SDK or a custom Go handler via Docker.
 
-The OpenWhisk Docker SDK uses a Node.js application to handle the JSON request from the platform and spawns a process to execute the Go binary. Invocation parameters are passed as a JSON string as a command-line argument to the binary. The binary must write the JSON string response to _stdout_, the handler will return this to the platform.
+The OpenWhisk [Docker SDK](https://github.com/openwhisk/openwhisk/blob/master/docs/reference.md#docker-actions) uses a Node.js application to handle the JSON request from the platform and spawns a process to execute the Go binary. Invocation parameters are passed as a JSON string as a command-line argument to the binary. The binary must write the JSON string response to _stdout_, the handler will return this to the platform.
 
-Using the custom Go handler, the user uses an external library that implements a callback to register your Action function. The library implements a simple web service that handles processing the invocations from the platform, executing the registered Action callback for each request. This compiled binary is built and runs in a Docker container.
+Using the custom Go handler, the user uses an [external library](https://github.com/jthomas/ow) that implements a callback to register your Action function. The library implements a simple web service that handles processing the invocations from the platform, executing the registered Action callback for each request. This compiled binary is built and runs in a Docker container.
 
 usage
 --
